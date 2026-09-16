@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposal — Ninja Buses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --ink: #080B18; --ink2: #0C1122; --surf: #111830; --surf2: #161E3C;
+    --coral: #FF5E57; --coral2: #FF8A5B; --gold: #E7B25C; --mint: #5FD3A7;
+    --muted: #AAB0CE; --text: #EDEFF7;
+    --disp: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ink); color: var(--text);
+    font-family: var(--sans); font-size: 16px; line-height: 1.65;
+    margin: 0; padding: 0 0 100px; position: relative; overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body:before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(80% 50% at 50% -8%, rgba(255,94,87,.16), transparent 60%),
+      radial-gradient(60% 40% at 100% 0%, rgba(231,178,92,.09), transparent 60%);
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: var(--sans); font-size: 12px; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; display: inline-flex; align-items: center; gap: 12px;
+  }
+  .eyebrow:before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+
+  h1, h2, h3 { font-family: var(--disp); text-transform: uppercase; color: #fff; text-wrap: balance; margin: 0; }
+  h1 { font-weight: 800; font-size: clamp(34px,7vw,58px); line-height: .95; letter-spacing: -.005em; }
+  h2 { font-weight: 800; font-size: clamp(24px,3.6vw,34px); line-height: 1; margin: .3em 0 .5em; }
+  h3 { font-weight: 700; font-size: 19px; line-height: 1.15; text-transform: none; margin: 0 0 8px; }
+
+  header.top { padding: 50px 0 48px; }
+  h1 { margin-top: 20px; max-width: 20ch; font-size: clamp(32px, 6.5vw, 56px); }
+  .dek { font-size: 16px; color: var(--muted); max-width: 56ch; margin: 18px 0 0; line-height: 1.6; }
+  .dek a { color: var(--gold); font-weight: 700; border-bottom: 1px solid rgba(231,178,92,.4); }
+
+  section { padding: 48px 0; border-top: 1px solid rgba(237,239,247,.06); }
+  section:first-of-type { border-top: none; padding-top: 0; }
+  .section-note { color: var(--muted); max-width: 62ch; margin: 0 0 28px; font-size: 15px; line-height: 1.6; }
+  p { max-width: 70ch; }
+
+  .path-flag {
+    display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 11px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--mint);
+    margin-bottom: 22px;
+  }
+  .path-flag:before { content: ""; width: 18px; height: 2px; background: var(--mint); }
+  .offer-list { display: flex; flex-direction: column; gap: 12px; }
+  .offer-item {
+    background: var(--ink2); border-radius: 12px; padding: 24px 26px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: flex-start;
+    border: 1px solid rgba(237,239,247,.08); cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: background .2s, border-color .2s;
+  }
+  .offer-item:hover { background: var(--surf); border-color: rgba(237,239,247,.14); }
+  .offer-item:has(input:checked) { background: var(--surf2); border-color: rgba(231,178,92,.5); }
+  .offer-item input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none; width: 22px; height: 22px; border-radius: 6px;
+    border: 2px solid rgba(237,239,247,.3); background: transparent; cursor: pointer; flex-shrink: 0;
+    display: grid; place-content: center; margin: 0;
+  }
+  .offer-item input[type="checkbox"]:checked {
+    background: linear-gradient(96deg, var(--coral), var(--gold)); border-color: transparent;
+  }
+  .offer-item input[type="checkbox"]:checked:after {
+    content: ""; width: 6px; height: 11px; border: solid var(--ink); border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg) translate(-1px,-1px);
+  }
+  .offer-item .step { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--mint); font-weight: 700; margin-bottom: 8px; }
+  .offer-item h3 { margin: 0 0 12px; font-size: 18px; font-weight: 700; }
+  .offer-item p { font-size: 14.5px; line-height: 1.65; color: var(--muted); margin: 0; max-width: 50ch; }
+  .offer-item ul { font-size: 14.5px; color: var(--muted); margin: 10px 0 0 0; padding-left: 18px; line-height: 1.6; }
+  .offer-item li { margin-bottom: 5px; }
+  .offer-item li.free { color: var(--mint); font-weight: 600; }
+  .offer-price {
+    font-family: var(--disp); font-weight: 800; font-size: 30px; letter-spacing: -.01em;
+    white-space: nowrap; text-align: right;
+    background: linear-gradient(96deg, var(--coral), var(--gold));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .offer-price .unit { display: block; font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; -webkit-text-fill-color: var(--muted); background: none; margin-top: 4px; }
+  .offer-price .split { display: block; font-family: var(--sans); font-size: 10px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .06em; -webkit-text-fill-color: var(--gold); background: none; margin-top: 8px; }
+
+  .summary-block { padding: 32px 28px; background: var(--surf); border-radius: 12px; border: 1px solid rgba(237,239,247,.1); }
+  .summary-empty { color: var(--muted); font-size: 14px; }
+  .summary-rows { display: none; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 14.5px; color: var(--muted); }
+  .summary-row span:last-child { color: var(--text); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .summary-divider { height: 1px; background: rgba(237,239,247,.08); margin: 6px 0; }
+  .summary-row.deposit span:last-child {
+    font-family: var(--disp); font-size: 22px; font-weight: 800;
+    background: linear-gradient(96deg, var(--coral), var(--gold));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .summary-row.monthly span:last-child { color: var(--mint); }
+  .summary-note { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(237,239,247,.1); font-size: 13.5px; color: var(--muted); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-weight: 700; font-size: 14px; letter-spacing: .01em; padding: 14px 26px;
+    border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    background: linear-gradient(96deg, var(--coral), var(--gold)); color: var(--ink);
+  }
+
+  footer.close { padding: 48px 0 0; text-align: center; }
+  .contact-line { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .contact-pill {
+    display: inline-flex; align-items: center; font-weight: 700; font-size: 12px;
+    padding: 8px 16px; border-radius: 100px; background: var(--ink2); color: var(--muted);
+    border: 1px solid rgba(237,239,247,.06); transition: border-color .2s;
+  }
+  .contact-pill:hover { border-color: rgba(237,239,247,.14); }
+  .payment-section { margin-top: 50px; padding: 32px 28px; background: linear-gradient(135deg, rgba(255,94,87,.08), rgba(231,178,92,.05)); border: 1px solid rgba(231,178,92,.2); border-radius: 12px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .payment-section h3 { margin: 0 0 16px; font-size: 18px; font-weight: 700; }
+  .payment-info { flex: 1; min-width: 260px; }
+  .payment-info p { margin: 10px 0; font-size: 14.5px; color: var(--muted); }
+  .qr-code { flex-shrink: 0; text-align: center; }
+  .qr-code img { width: 180px; height: 180px; border-radius: 10px; background: #fff; padding: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  .qr-label { font-size: 11px; color: var(--muted); margin-top: 10px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <span class="eyebrow">Prepared for Stix &middot; Ninja Buses</span>
+    <h1>Your New Website, Ready to Go Live</h1>
+    <p class="dek">The new ninjabuses.com is built and running at <a href="https://ninja-party-buses-preview-982.pages.dev" target="_blank" rel="noopener">this preview link</a>. No long-term commitment. Pick what makes sense, start small, scale when you're ready.</p>
+  </header>
+
+  <section>
+    <span class="eyebrow">The Offer</span>
+    <h2>Pick what you need, grow from there</h2>
+    <p class="section-note">Everything is 50% upfront, 50% when done. Cancel anytime. No surprises.</p>
+
+    <span class="path-flag">Start here</span>
+
+    <div class="offer-list" id="offerList">
+      <label class="offer-item">
+        <input type="checkbox" data-name="New site, switched live on ninjabuses.com" data-price="500" data-type="onetime">
+        <div>
+          <div class="step">Step 1</div>
+          <h3>New site, switched live on ninjabuses.com</h3>
+          <ul>
+            <li>The preview site is the first half of the work. You say go and I do 1 more full day on it.</li>
+            <li>Goes live on your domain. Old URLs redirect so your search rankings stay.</li>
+            <li>You own the HTML code outright. Every week there will be an updated file with the website code in it.</li>
+            <li>Free GitHub backup + Cloudflare hosting (no monthly bills)</li>
+            <li class="free">Included free: tracking and analytics setup. Google Analytics, Search Console, conversion events for calls, texts and date checks, heatmaps and session recordings.</li>
+          </ul>
+        </div>
+        <div class="offer-price">$500<span class="unit">one-time</span><span class="split">$250 up &middot; $250 when live</span></div>
+      </label>
+
+      <label class="offer-item">
+        <input type="checkbox" data-name="Ongoing growth work & weekly reports" data-price="400" data-type="monthly">
+        <div>
+          <div class="step">Monthly &mdash; cancel anytime</div>
+          <h3>Growth work + automated reporting</h3>
+          <ul>
+            <li>Work on the site every day: new guides, fixes, data-based tuning</li>
+            <li>Google Ads management + optimization</li>
+            <li>Automated weekly performance report in plain English</li>
+            <li>Monthly read on where your ad money should go</li>
+            <li>Text a request and it's on the site within a day</li>
+          </ul>
+        </div>
+        <div class="offer-price">$400<span class="unit">/ month</span><span class="split">$200 up &middot; $200 end</span></div>
+      </label>
+    </div>
+  </section>
+
+  <div class="summary-block">
+    <h2 style="font-size:22px">Build Your Package</h2>
+    <p class="section-note" style="margin-bottom:14px">Check what you want above. Everything is 50/50 split.</p>
+
+    <p class="summary-empty" id="summaryEmpty">Nothing selected yet.</p>
+
+    <div class="summary-rows" id="summaryRows">
+      <div id="summaryLines"></div>
+      <div class="summary-divider"></div>
+      <div class="summary-row deposit"><span>Due today (50%)</span><span id="totalDeposit">$0</span></div>
+      <div class="summary-row" id="onetimeRemainderRow" style="display:none"><span>Due when the site is live</span><span id="totalOnetimeRemainder">$0</span></div>
+      <div class="summary-row monthly" id="monthlyRow" style="display:none"><span>Due at month's end</span><span id="totalMonthlyRemainder">$0</span></div>
+    </div>
+    <p class="summary-note" id="monthlyRecurNote" style="display:none;margin-top:10px;padding-top:0;border-top:none">Every month after: same 50/50 split, ongoing.</p>
+
+    <a class="btn" id="emailBtn" href="#" style="margin-top:20px;display:none">Email Me These Selections &rarr;</a>
+
+    <p class="summary-note">Opens your email with everything pre-filled &mdash; just send it.</p>
+  </div>
+
+  <div class="payment-section">
+    <div class="payment-info">
+      <h3>Send payment to:</h3>
+      <p>Venmo: @pedicabeventspecialties</p>
+      <p>512-525-5221</p>
+      <p>matthewherber10@gmail.com</p>
+    </div>
+    <div class="qr-code">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiElEQVRYhdWYMZaDMAxExaNwyRE4Cjdb+2gchSNQUvihnRlBdvP2pV7hIiH6KSx7PJYw+ziqc9h44BGfs/ugyJmAfGmCgx+TN0bWOnSGkpPRfUMmiFnEhj65tycQ5rNW72Vb2nOIWdmXdoZ2nkBCO73sZu7HfO9FBhKnkSRmDV2/ndOc5GdQG8ztr9PlI8xn48e+IIeyYf3HHVnlJtDOhJ+//Jp/vVSVlsipecvAr6kaaWfjLmQm2ACdUPo1VC7Fv/bnnwlnvVWcw8uVTdxbblJJoGXour0rJDXphTfg7dfUTL/yyUyknVPOF0SBmpx0SiWcT9qhX1+Z5iXhfB63OPxvkXaWdmYgdDYPlxs0a2gcxHITLi2+bVqZ1ay+RCuem5SoOlnhc/1jF9RN5SUxsAtQjamyQ2ruyUmVQcv5qotHhW+pSdT+6kvcrmcWTSlIdHqq8HX31Zd28hNdIOytuco8kw8hiNH5dBoxLDeRXhCDh6hz5XuXuy9JS67TyDcY4XwtcstNPo5vExXfnsBMYvUAAAAASUVORK5CYII=" alt="Venmo QR Code">
+      <div class="qr-label">Scan to pay via Venmo</div>
+    </div>
+  </div>
+
+  <footer class="close">
+    <div class="contact-line">
+      <span class="contact-pill">512-525-5221</span>
+      <span class="contact-pill">matthewherber10@gmail.com</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#offerList input[type="checkbox"]'));
+  var empty = document.getElementById('summaryEmpty');
+  var rows = document.getElementById('summaryRows');
+  var lines = document.getElementById('summaryLines');
+  var totalDepositEl = document.getElementById('totalDeposit');
+  var onetimeRemainderRow = document.getElementById('onetimeRemainderRow');
+  var totalOnetimeRemainderEl = document.getElementById('totalOnetimeRemainder');
+  var monthlyRow = document.getElementById('monthlyRow');
+  var totalMonthlyRemainderEl = document.getElementById('totalMonthlyRemainder');
+  var monthlyRecurNote = document.getElementById('monthlyRecurNote');
+  var emailBtn = document.getElementById('emailBtn');
+
+  function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+  function half(n) { return Math.round(n / 2); }
+
+  function recalc() {
+    var checked = boxes.filter(function(b) { return b.checked; });
+    if (!checked.length) {
+      empty.style.display = 'block';
+      rows.style.display = 'none';
+      monthlyRecurNote.style.display = 'none';
+      emailBtn.style.display = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    rows.style.display = 'flex';
+
+    var onetime = 0, monthly = 0;
+    lines.innerHTML = '';
+    checked.forEach(function(b) {
+      var price = parseInt(b.dataset.price, 10);
+      var type = b.dataset.type;
+      if (type === 'monthly') monthly += price; else onetime += price;
+      var row = document.createElement('div');
+      row.className = 'summary-row';
+      row.innerHTML = '<span>' + b.dataset.name + '</span><span>' + fmt(price) + (type === 'monthly' ? '/mo' : '') + '</span>';
+      lines.appendChild(row);
+    });
+
+    var onetimeHalf = half(onetime);
+    var monthlyHalf = half(monthly);
+
+    totalDepositEl.textContent = fmt(onetimeHalf + monthlyHalf);
+
+    if (onetime > 0) {
+      onetimeRemainderRow.style.display = 'flex';
+      totalOnetimeRemainderEl.textContent = fmt(onetime - onetimeHalf);
+    } else {
+      onetimeRemainderRow.style.display = 'none';
+    }
+
+    if (monthly > 0) {
+      monthlyRow.style.display = 'flex';
+      totalMonthlyRemainderEl.textContent = fmt(monthly - monthlyHalf);
+      monthlyRecurNote.style.display = 'block';
+      monthlyRecurNote.textContent = 'Every month after: ' + fmt(monthlyHalf) + ' to start, ' + fmt(monthly - monthlyHalf) + ' at month\'s end.';
+    } else {
+      monthlyRow.style.display = 'none';
+      monthlyRecurNote.style.display = 'none';
+    }
+
+    var subject = 'My selections — Ninja Buses proposal';
+    var body = "Hi Matt,\n\nHere's what we'd like to move forward with:\n\n";
+    checked.forEach(function(b) {
+      var price = parseInt(b.dataset.price, 10);
+      var type = b.dataset.type;
+      body += '- ' + b.dataset.name + ' — ' + fmt(price) + (type === 'monthly' ? '/mo' : '') + '\n';
+    });
+    body += '\nDue today (50%): ' + fmt(onetimeHalf + monthlyHalf);
+    if (onetime > 0) body += '\nDue when the site is live: ' + fmt(onetime - onetimeHalf);
+    if (monthly > 0) {
+      body += '\nDue at month\'s end: ' + fmt(monthly - monthlyHalf);
+      body += '\nEvery month after: ' + fmt(monthlyHalf) + ' up, ' + fmt(monthly - monthlyHalf) + ' at month\'s end';
+    }
+    body += "\n\nLet's get started.";
+
+    emailBtn.href = 'mailto:matthewherber10@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    emailBtn.style.display = 'inline-flex';
+  }
+
+  boxes.forEach(function(b) { b.addEventListener('change', recalc); });
+  recalc();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Switchover Checklist — Ninja Buses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --ink: #080B18; --ink2: #0C1122; --surf: #111830; --surf2: #161E3C;
+    --coral: #FF5E57; --gold: #E7B25C; --mint: #5FD3A7;
+    --muted: #AAB0CE; --text: #EDEFF7;
+    --disp: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--ink); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.65; margin: 0; padding: 0 0 100px; position: relative; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body:before { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(80% 50% at 50% -8%, rgba(255,94,87,.16), transparent 60%), radial-gradient(60% 40% at 100% 0%, rgba(231,178,92,.09), transparent 60%); }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(231,178,92,.4); }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); position: relative; z-index: 1; }
+  .eyebrow { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); font-weight: 700; display: inline-flex; align-items: center; gap: 12px; }
+  .eyebrow:before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+  h1, h2, h3 { font-family: var(--disp); text-transform: uppercase; color: #fff; text-wrap: balance; margin: 0; }
+  h1 { font-weight: 800; font-size: clamp(32px,6.5vw,56px); line-height: .95; margin-top: 20px; max-width: 20ch; }
+  h2 { font-weight: 800; font-size: clamp(22px,3.4vw,30px); line-height: 1; margin: 0 0 6px; }
+  h3 { font-weight: 700; font-size: 17px; text-transform: none; margin: 18px 0 6px; color: var(--mint); }
+  header.top { padding: 50px 0 40px; }
+  .dek { font-size: 16px; color: var(--muted); max-width: 58ch; margin: 18px 0 0; }
+  .rule { padding: 22px 26px; background: var(--surf); border-radius: 12px; border-left: 3px solid var(--mint); margin: 0 0 40px; font-size: 15px; color: var(--muted); }
+  .rule b { color: #fff; }
+  .rule p { margin: 0 0 10px; }
+  .rule p:last-child { margin: 0; }
+  .item { background: var(--ink2); border: 1px solid rgba(237,239,247,.08); border-radius: 12px; padding: 26px 28px; margin: 0 0 14px; }
+  .item .top-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+  .item .time { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .item p { color: var(--muted); font-size: 14.5px; margin: 6px 0 0; max-width: 62ch; }
+  .item ol { color: var(--muted); font-size: 14.5px; margin: 8px 0 0; padding-left: 22px; line-height: 1.6; }
+  .item li { margin-bottom: 6px; }
+  .item li b { color: #fff; font-weight: 600; }
+  .item .you-get { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(237,239,247,.08); font-size: 13.5px; color: var(--muted); }
+  .item .you-get b { color: var(--mint); }
+  .then { margin-top: 40px; padding: 26px 28px; background: var(--surf); border-radius: 12px; border: 1px solid rgba(231,178,92,.2); }
+  .then ol { color: var(--muted); font-size: 14.5px; margin: 10px 0 0; padding-left: 22px; }
+  .then li { margin-bottom: 6px; }
+  footer.close { padding: 48px 0 0; text-align: center; }
+  .contact-line { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .contact-pill { display: inline-flex; align-items: center; font-weight: 700; font-size: 12px; padding: 8px 16px; border-radius: 100px; background: var(--ink2); color: var(--muted); border: 1px solid rgba(237,239,247,.06); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="eyebrow">Ninja Buses &middot; Switchover</span>
+    <h1>How We Make the Switch Smooth</h1>
+    <p class="dek">Five accounts, about an hour of your time total, and none of it has to happen on the same day. Here's what each one is, why I need it, and exactly what to click.</p>
+  </header>
+
+  <div class="rule">
+    <p><b>The one rule: you own everything, I get added as admin.</b></p>
+    <p>Every account below should be under your own Google login or your own email, not mine and not a previous web person's. Then you add <b>matthewherber10@gmail.com</b> as an admin on each one. That way you never have to hand me a password, your login stays yours, and you can remove me in 10 seconds any time you want.</p>
+    <p><b>If any of these are under someone else's login</b> (an old web guy, a marketing company, an ex-employee), you have two options and it's your call:</p>
+    <p><b>Option A: take it over.</b> They add you as an admin or owner, then you remove them. You keep all the history. I'll walk you through it on a call, it's usually a 5 minute thing.</p>
+    <p><b>Option B: get in, grab the data, walk away.</b> They add you as an admin just long enough for me to export everything worth keeping (past traffic, search history, ad results). Then we set up fresh accounts under your own login and never touch the old ones again. Cleaner if dealing with them is a headache.</p>
+    <p>Either way the end result is the same: every account is yours, under your login, with me added as admin.</p>
+  </div>
+
+  <div class="item">
+    <div class="top-row"><h2>1. Google Analytics</h2><span class="time">You &middot; 5 min</span></div>
+    <p>This is what tells us how many people visit the site, where they came from, and which pages lead to calls and bookings. Without it the ad money is a guess.</p>
+    <h3>Do you already have it?</h3>
+    <p>Go to <a href="https://analytics.google.com" target="_blank" rel="noopener">analytics.google.com</a> logged into the Gmail you use for the business. If you see Ninja Buses listed, you have it. If it says "Start measuring," you don't, and that's fine, I'll set it up under your login.</p>
+    <h3>If you have it</h3>
+    <ol>
+      <li>Click the gear icon (<b>Admin</b>) in the bottom left.</li>
+      <li>Under the Account column, click <b>Account access management</b>.</li>
+      <li>Click the blue <b>+</b> in the top right, then <b>Add users</b>.</li>
+      <li>Enter <b>matthewherber10@gmail.com</b>, check the <b>Administrator</b> role, click <b>Add</b>.</li>
+    </ol>
+    <div class="you-get">I get: <b>Administrator</b>. You stay the account owner.</div>
+  </div>
+
+  <div class="item">
+    <div class="top-row"><h2>2. Google Search Console</h2><span class="time">You &middot; 5 min</span></div>
+    <p>This is Google's own report on how ninjabuses.com shows up in search: which words people typed, where you rank, and any problems Google sees. It's also where we tell Google about the new site so the old page rankings carry over.</p>
+    <h3>Do you already have it?</h3>
+    <p>Go to <a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a> with the same Gmail. If ninjabuses.com is in the dropdown at the top left, you have it. If not, I'll set it up so it's verified under your login.</p>
+    <h3>If you have it</h3>
+    <ol>
+      <li>Pick ninjabuses.com in the top left dropdown.</li>
+      <li>Click <b>Settings</b> in the left menu, then <b>Users and permissions</b>.</li>
+      <li>Click <b>Add user</b>, enter <b>matthewherber10@gmail.com</b>, set permission to <b>Owner</b>, click <b>Add</b>.</li>
+    </ol>
+    <div class="you-get">I get: <b>Owner</b> (this is what lets me submit the new sitemap and fix errors). You stay the verified owner, so you can remove me any time.</div>
+  </div>
+
+  <div class="item">
+    <div class="top-row"><h2>3. Google Ads</h2><span class="time">You &middot; 5 min</span></div>
+    <p>This is where the ad money lives. I need admin access to see what's running, what it costs per booking, and to make changes. Billing stays on your card, in your name, always.</p>
+    <h3>Do you already have it?</h3>
+    <p>Go to <a href="https://ads.google.com" target="_blank" rel="noopener">ads.google.com</a> with the same Gmail. If you see campaigns, you have it. If a marketing company ran your ads before, the account may be under their login. Ask them to add you as <b>Admin</b> first, then do the steps below.</p>
+    <h3>If you have it</h3>
+    <ol>
+      <li>Click <b>Admin</b> (the gear or wrench icon) in the left menu.</li>
+      <li>Click <b>Access and security</b>.</li>
+      <li>Click the blue <b>+</b>, enter <b>matthewherber10@gmail.com</b>, pick <b>Admin</b> access level, click <b>Send invitation</b>.</li>
+    </ol>
+    <p>If there's no account yet, don't create one. I'll set it up with you on a call so it's under your login and your card from day one.</p>
+    <div class="you-get">I get: <b>Admin</b>. You stay the account owner and the only one on the billing.</div>
+  </div>
+
+  <div class="item">
+    <div class="top-row"><h2>4. Your current site (Weebly)</h2><span class="time">You &middot; 10 min</span></div>
+    <p>I don't need to own this and I don't need your password. I need two things from it: to confirm where ninjabuses.com is registered (it's often through Weebly itself), and to keep the old site alive for a week or two after the switch while I confirm every old link forwards to the new one. After that you cancel it and stop paying for it.</p>
+    <ol>
+      <li>Log into Weebly and open the Ninja Buses site.</li>
+      <li>Go to <b>Settings</b>, then <b>Editors</b> (some accounts call it Contributors), and add <b>matthewherber10@gmail.com</b>.</li>
+      <li>While you're there, go to <b>Settings</b>, then <b>Domains</b>, and text me a screenshot. That tells me where the domain lives.</li>
+    </ol>
+    <div class="you-get">I get: <b>Editor</b>, which is view and edit but not billing or delete. You keep the login. We cancel it together once the new site has been live and checked.</div>
+  </div>
+
+  <div class="item">
+    <div class="top-row"><h2>5. The domain (ninjabuses.com)</h2><span class="time">You &middot; 10 min, on a call with me</span></div>
+    <p>This is the one step that actually flips the switch. Wherever ninjabuses.com is registered (Weebly, GoDaddy, Squarespace, Google Domains, whoever), there are two lines called <b>nameservers</b>. Changing them to the two Cloudflare ones points your domain at the new site. Old URLs keep working because the redirects are already built.</p>
+    <ol>
+      <li>Find the login for wherever the domain is registered. Step 4 tells us where that is.</li>
+      <li>Call me. I'll read you the two nameserver values and you paste them in. That's it.</li>
+      <li>It takes anywhere from a few minutes to a few hours to take effect. I'll be watching it and I'll text you when it's live.</li>
+    </ol>
+    <p>You keep the domain in your name, under your login, on your card. I never need to own it or move it.</p>
+    <div class="you-get">I get: nothing on this one. You do it, I talk you through it.</div>
+  </div>
+
+  <div class="item">
+    <div class="top-row"><h2>6. New hosting (Cloudflare)</h2><span class="time">You &middot; 3 min</span></div>
+    <p>The new site runs on Cloudflare and hosting is free. I'll set it up under your email so the account is yours from the start, same rule as everything else.</p>
+    <ol>
+      <li>I'll send you a Cloudflare signup link. Create the account with your business email.</li>
+      <li>You'll get an email invite to add me as a member. Click accept.</li>
+    </ol>
+    <div class="you-get">I get: <b>Administrator</b>. You own the account. If we ever part ways, the site keeps running and you don't need me to touch it.</div>
+  </div>
+
+  <div class="then">
+    <span class="eyebrow">Then</span>
+    <h2 style="margin-top:10px">What happens once I have access</h2>
+    <ol>
+      <li>Tracking goes on the new site before it goes live, so day one already has real data.</li>
+      <li>We pick a slow day for the domain switch. Site goes live, old links forward, sitemap goes to Google.</li>
+      <li>You get a text when it's live and a plain-English report at the end of the first week.</li>
+      <li>Two weeks in, once I've confirmed every old link works, you cancel Weebly.</li>
+    </ol>
+  </div>
+
+  <footer class="close">
+    <div class="contact-line">
+      <span class="contact-pill">512-525-5221</span>
+      <span class="contact-pill">matthewherber10@gmail.com</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
